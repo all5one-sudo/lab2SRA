@@ -1,0 +1,23 @@
+* E:\Documentos\GitHub\lab2SRA\circuito2.4.asc
+XU1 N005 N002 N003 N007 vo1 LM324
+R1 vo1 N002 2.2k
+R2 N006 vo1 2.2k
+R§aR2 Vout N006 47k
+R§aR1 N002 0 47k
+R5 N005 N001 4125
+R6 N004 N001 3.3k
+R7 N008 N004 3.3k
+R8 N008 N005 3.3k
+V1 N007 0 -5
+V2 N003 0 5
+XU2 N004 N006 N003 N007 Vout LM324
+V3 N008 0 SINE(-{X} -1 50)
+V4 N001 0 SINE({X} 1 50)
+.inc LM324.lib
+.tran 0 0.005 0
+* Medición del rechazo al modo común
+* Se usa la directiva .STEP para poder correr varias simulaciones con diferentes parámetros
+* En este caso, se modifica la tensión de modo común, se llama X a ese parámetro
+.step param X 10 30 .75
+.backanno
+.end
